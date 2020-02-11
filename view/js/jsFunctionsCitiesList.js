@@ -5,10 +5,10 @@ $(document).ready(function () {
     $("#logout").click(function () {
 
         $.ajax({
-
             url: "../controller/cLogout.php",
             success: function (result) {
 
+                sessionStorage.setItem('PHPSESSID', '');
                 window.location.href = "../index.html";
             },
             error: function (xhr) {
@@ -17,25 +17,22 @@ $(document).ready(function () {
         });
     });
 });
-function citiesList(idUser, userName) {
+function citiesList(idUser, name) {
+
     $.ajax({
+        type: "GET",
+        data: { idUser, name },
+        url: "../controller/cCitiesList.php",
+        dataType: "json",
 
-        // show the table
-
-
-
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (xhr) {
+            alert("An error occured: " + xhr.status + " " + xhr.statusText);
+        }
     });
 
-}
-function sessionLoader() {
-    if (logedCheck != false) {
-        if (!data.admin - 1) {
-            location.href = "view/vCitiesList.html";
-        } else {
-            location.href = "../index.html";
-        }
-    }
-    logedCheck = false;
 }
 
 function sessionCheck() {
@@ -50,6 +47,7 @@ function sessionCheck() {
         success: function (result) {
             console.log(result);
             userCheck(result);
+            citiesList(result.idUser, result.name);
         },
         error: function (xhr) {
             alert("An error occured: " + xhr.status + " " + xhr.statusText);

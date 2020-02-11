@@ -92,11 +92,8 @@ function sessionCheck() {
     });
 }
 function userCheck(result) {
-    if ((!result.name == "") || (result.name == null)) {
-        //        if (result.admin == 1) {
+    if ((result.name == "") || (result.name == null)) {
     } else {
         location.href = "view/vCitiesList.html";
     }
-    // } else {
-    // 	alert("Error al iniciar sesion");
 }

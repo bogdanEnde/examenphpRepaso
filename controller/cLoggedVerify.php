@@ -32,7 +32,7 @@ if ((isset($_SESSION['name']))  && (isset($_SESSION['admin']))){
     
     $obj['name']=$_SESSION['name'];
     $obj['admin']=$_SESSION['admin'];
-//     $obj['idUsuario']=$_SESSION['idUsuario'];
+     $obj['idUser']=$_SESSION['idUser'];
     $obj['$PHPSESSID'] = $_SESSION['PHPSESSID'];
     
     $objJson = json_encode($obj);

@@ -37,11 +37,26 @@ class countryModel extends countryClass{
     function findIdCountry() // fill country : $this
     {
        
-        
-        
-        
-        
-        
+        $this->OpenConnect();
+
+        $Code = $this->Code;
+
+        $sql = "call spFindIdCountry('$Code')";
+        $result = $this->link->query($sql);
+
+
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $this->setName($row['Name']);
+            $this->setContinent($row['Continent']);
+            $this->setSurfaceArea($row['SurfaceArea']);
+            $this->setIndepYear($row['IndepYear']);
+            $this->setPopulation($row['Population']);
+            $this->setLifeExpectancy($row['LifeExpectancy']);
+            $this->setCapital($row['Capital']);
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+         
     }
     
    

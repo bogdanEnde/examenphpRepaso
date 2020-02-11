@@ -49,6 +49,7 @@ if (($name != null) && ($password != null)) {
 
         $obj['usuario'] = $_SESSION['name'];
         $obj['admin'] = $_SESSION['admin'];
+        $obj['idUser'] = $_SESSION['idUser'];
        
         // $obj['idCategoria'] = $_SESSION['idCategoria'];
 

@@ -2,10 +2,14 @@
 
 include_once '../model/usersCitiesModel.php';
 
-$response = array();
+ $response = array();
 
 
-// get users visited cities 
+$idUser = filter_input(INPUT_GET, "idUser");
+$name = filter_input(INPUT_GET, "name");
 
+$response =new usersCitiesModel();
+$response->setIdUser($idUser);
+$response->findDataByIdUser();
 
-echo json_encode($response);
+echo $response->getArrUsersCities();
